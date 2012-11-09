@@ -12,6 +12,24 @@ public class dataSets {
 		className = cN;
 	}
 	
+	double getsL(){
+		return sepalLength;
+	}
 	
+	double getsW(){
+		return sepalWidth;
+	}
+	
+	double getpL(){
+		return petalLength;
+	}
+	
+	double getpW(){
+		return petalWidth;
+	}
+	
+	String getcN(){
+		return className;
+	}
 
 }

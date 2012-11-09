@@ -34,6 +34,7 @@ public class parseText {
 	    //use a second Scanner to parse the content of each line 
 	    Scanner scanner = new Scanner(aLine);
 	    scanner.useDelimiter(",");
+	    dataSets = new ArrayList();
 	    if ( scanner.hasNext() ){
 	    	
 	      double sL = scanner.nextDouble();
@@ -42,7 +43,7 @@ public class parseText {
 	      double pW = scanner.nextDouble();
 	      String cN = scanner.next();
 	      dataSets.add(new dataSets(sL, sW, pL, pW, cN));
-	      //print("Level is " + quote(level.trim()) + ", Axis is " + quote(axis.trim())+", Endpoint 1 is "+endpoint1+", Endpoint 2 is "+endpoint2+", and Depth is "+beamDepth );
+	      //print("Level is " + quote(dataSets.get(counter).trim()) + ", Axis is " + quote(axis.trim())+", Endpoint 1 is "+endpoint1+", Endpoint 2 is "+endpoint2+", and Depth is "+beamDepth );
 	      print(counter);
 	      counter++;
 	    }
