@@ -1,7 +1,10 @@
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class parseText {
+	
+	ArrayList dataSets;
 	static int counter = 1;
 	/*public static void main(String... aArgs) throws FileNotFoundException {
 	    parseText parser = new parseText("beamout.txt");
@@ -32,12 +35,14 @@ public class parseText {
 	    Scanner scanner = new Scanner(aLine);
 	    scanner.useDelimiter(",");
 	    if ( scanner.hasNext() ){
-	      String level = scanner.next();
-	      String axis = scanner.next();
-	      String endpoint1 = scanner.next();
-	      String endpoint2 = scanner.next();
-	      String beamDepth = scanner.next();
-	      print("Level is " + quote(level.trim()) + ", Axis is " + quote(axis.trim())+", Endpoint 1 is "+endpoint1+", Endpoint 2 is "+endpoint2+", and Depth is "+beamDepth );
+	    	
+	      double sL = scanner.nextDouble();
+	      double sW = scanner.nextDouble();
+	      double pL = scanner.nextDouble();
+	      double pW = scanner.nextDouble();
+	      String cN = scanner.next();
+	      dataSets.add(new dataSets(sL, sW, pL, pW, cN));
+	      //print("Level is " + quote(level.trim()) + ", Axis is " + quote(axis.trim())+", Endpoint 1 is "+endpoint1+", Endpoint 2 is "+endpoint2+", and Depth is "+beamDepth );
 	      print(counter);
 	      counter++;
 	    }
