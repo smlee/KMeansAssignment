@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class parseText {
 	
-	ArrayList dataSets;
-	static int counter = 1;
+	ArrayList<dataSets> dataSet;
+	static int counter = 0;
 	/*public static void main(String... aArgs) throws FileNotFoundException {
 	    parseText parser = new parseText("beamout.txt");
 	    parser.processLines();
@@ -34,7 +34,7 @@ public class parseText {
 	    //use a second Scanner to parse the content of each line 
 	    Scanner scanner = new Scanner(aLine);
 	    scanner.useDelimiter(",");
-	    dataSets = new ArrayList();
+	    dataSet = new ArrayList<dataSets>();
 	    if ( scanner.hasNext() ){
 	    	
 	      double sL = scanner.nextDouble();
@@ -42,13 +42,19 @@ public class parseText {
 	      double pL = scanner.nextDouble();
 	      double pW = scanner.nextDouble();
 	      String cN = scanner.next();
-	      dataSets.add(new dataSets(sL, sW, pL, pW, cN));
-	      //print("Level is " + quote(dataSets.get(counter).trim()) + ", Axis is " + quote(axis.trim())+", Endpoint 1 is "+endpoint1+", Endpoint 2 is "+endpoint2+", and Depth is "+beamDepth );
+	      dataSet.add(new dataSets(sL, sW, pL, pW, cN));
+	      //dataSets dS = (dataSets)dataSet.get(counter);
+	      //print("Sepal length is " + dS.sepalLength + ", Sepal Width is " + dS.getsW()+", Petal length is "+dS.getpL()+", Petal width is "+dS.getpW()+", and Class is "+dS.className );
 	      print(counter);
 	      counter++;
 	    }
 	    else {
 	      print("Empty or invalid line. Unable to process.");
+	    }
+	    
+	    for (int x = 0; x<dataSet.size();x++){
+	    	dataSets dS = (dataSets)dataSet.get(x);
+		    print("Sepal length is " + dS.sepalLength + ", Sepal Width is " + dS.getsW()+", Petal length is "+dS.getpL()+", Petal width is "+dS.getpW()+", and Class is "+dS.className );
 	    }
 	  
 	  }
