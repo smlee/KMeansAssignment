@@ -2,34 +2,61 @@
 public class dataSets {
 	
 	double sepalLength, sepalWidth, petalLength, petalWidth;
-	String className;
+	int cluster;
+	//String className;
 	
-	public dataSets(double sL, double sW, double pL, double pW, String cN){
-		sepalLength = sL;
-		sepalWidth = sW;
-		petalLength = pL;
-		petalWidth = pW;
-		className = cN;
+	public dataSets(double sL, double sW, double pL, double pW){
+		this.sepalLength = sL;
+		this.sepalWidth = sW;
+		this.petalLength = pL;
+		this.petalWidth = pW;
+		//this.className = cN;
+		return;
+	}
+	
+	public void getsL(double nX){
+		sepalLength = nX;
+		return;
 	}
 	
 	double getsL(){
 		return sepalLength;
 	}
 	
+	public void getsW(double nY){
+		sepalWidth = nY;
+		return;
+	}
+	
 	double getsW(){
 		return sepalWidth;
 	}
 	
+	public void getpL(double nZ){
+		petalLength = nZ;
+		return;
+	}
 	double getpL(){
 		return petalLength;
 	}
 	
+	public void getpW(double nG){
+		petalWidth = nG;
+		return;
+		
+	}
 	double getpW(){
 		return petalWidth;
 	}
 	
-	String getcN(){
-		return className;
+	public void Cluster(int nClus){
+		this.cluster = nClus;
+			
 	}
+	
+	int getCluster(){
+		return cluster;
+	}
+
 
 }
