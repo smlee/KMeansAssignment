@@ -7,7 +7,8 @@ public class parseText {
 	
 	static ArrayList<dataSets> dataSet = new ArrayList<dataSets>();
     static ArrayList<centroids>centroidSet = new ArrayList<centroids>();
-    static ArrayList<dataSets> dataSet1;
+    static ArrayList<dataSets> dataSet1 = new ArrayList<dataSets>();
+    
     public static final int k = 3;    // Total clusters.
     public static final int totalData = 150; 
     
@@ -32,29 +33,29 @@ public class parseText {
 	    //use a second Scanner to parse the content of each line 
 	    Scanner scanner = new Scanner(aLine);
 	    scanner.useDelimiter(",");
-	    dataSet1 = new ArrayList<dataSets>();
+	    
 	    if ( scanner.hasNext() ){
-	    	
+	    	//dataSet1 = new ArrayList<dataSets>(150);
 	      double sL = scanner.nextDouble();
 	      double sW = scanner.nextDouble();
 	      double pL = scanner.nextDouble();
 	      double pW = scanner.nextDouble();
 	      String cN = scanner.next();
 	      dataSet1.add(new dataSets(sL, sW, pL, pW));
-	 
 	      
 	    }
 	    else {
 	      print("Empty or invalid line. Unable to process.");
 	    }
 	  } 
-	    /**for (int x = 0; x<dataSet.size();x++){
-	    	dataSets dS = (dataSets)dataSet.get(x);
-		    print("Sepal length is " + dS.sepalLength + ", Sepal Width is " + dS.getsW()+", Petal length is "+dS.getpL()+", Petal width is "+dS.getpW()+", and Class is "+dS.className );
+	  /**  for (int x = 0; x<dataSet1.size();x++){
+	    	dataSets dS = (dataSets)dataSet1.get(x);
+		    print("Sepal length is " + dS.sepalLength + ", Sepal Width is " + dS.getsW()+", Petal length is "+dS.getpL()+", Petal width is "+dS.getpW());//+", and Class is "+dS.className );
 	    }
+	    System.out.println(dataSet1.size());
 	  
 	  }
-	  **/
+	  //**/
 	  private final File fFile;
 	  private boolean isStillMoving;
 	  
@@ -88,9 +89,9 @@ public class parseText {
 	        // Add in new data, one at a time, recalculating centroids with each new one. 
 	        while(dataSet.size() < totalData)
 	        {
-	           // newData = (dataSets) dataSet.get(index);
-	        	newData = new dataSets(dataSet1.get(index).getsL(), dataSet1.get(index).getsW(),
-	        			dataSet1.get(index).getpL(), dataSet1.get(index).getpW());
+	        	dataSets dS = (dataSets)dataSet1.get(index);
+	        	newData = new dataSets(dS.getsL(), dS.getsW(),
+	        			dS.getpL(), dS.getpW());
 	        	dataSet.add(newData);
 	            minimum = bigNumber;
 	            for(int i = 0; i < k; i++)
@@ -105,10 +106,10 @@ public class parseText {
 	  
 	        for(int i = 0; i < k; i++)
             {
-                int totalX = 0; // sepal Length
-                int totalY = 0; // sepal Width
-                int totalZ = 0; // petal Length
-                int totalG = 0; // petal Width
+                double totalX = 0; // sepal Length
+                double totalY = 0; // sepal Width
+                double totalZ = 0; // petal Length
+                double totalG = 0; // petal Width
                 int clusterMembers = 0;
                 
                 for(int j = 0; j < dataSet.size(); j++)
@@ -135,10 +136,10 @@ public class parseText {
           // calculate new centroids.
           for(int i = 0; i < k; i++)
           {
-              int totalX = 0;
-              int totalY = 0;
-              int totalZ = 0;
-              int totalG = 0;
+              double totalX = 0;
+              double totalY = 0;
+              double totalZ = 0;
+              double totalG = 0;
               int clusterMembers = 0;
               for(int j = 0; j < dataSet.size(); j++)
               {

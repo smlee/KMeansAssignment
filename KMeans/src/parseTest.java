@@ -10,19 +10,18 @@ public class parseTest {
 	    parseText parser = new parseText("iris.data");
 	    parser.processLines();
 	    log("Done.");
-	    System.out.println(parseText.dataSet1.get(0).getpL());
-	    System.out.println(parseText.dataSet1.size());
-	    parseText.init();
-	    parseText.Clustering();
+	    System.out.println(parser.dataSet1.get(0).getpL());
+	    parser.init();
+	    parser.Clustering();
 	    
 	    for(int i = 0; i < k; i++)
 	    {
 	        System.out.println("Cluster " + i + " includes:");
 	        for(int j = 0; j < totalData; j++)
 	        {
-	            if(parseText.dataSet.get(j).getCluster() == i){
-	                System.out.println("     (" + parseText.dataSet.get(j).getsL() + ", " + parseText.dataSet.get(j).getsW() + 
-	                		", " + parseText.dataSet.get(j).getpL()+ ", " + parseText.dataSet.get(j).getpW()+ ")");
+	            if(parser.dataSet.get(j).getCluster() == i){
+	                System.out.println("     (" + parser.dataSet.get(j).getsL() + ", " + parser.dataSet.get(j).getsW() + 
+	                		", " + parser.dataSet.get(j).getpL()+ ", " + parser.dataSet.get(j).getpW()+ ")");
 	            }
 	        } // j
 	        System.out.println();
