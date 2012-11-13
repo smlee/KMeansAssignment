@@ -66,9 +66,9 @@ public class parseText {
 	  public static void init(){
 		  //Initialize random centroids
 		  System.out.println("Initial centroids:");
-		  centroidSet.add(new centroids(1.0, 1.0, 1.0, 1.0)); // lowest set.
-	      centroidSet.add(new centroids(4.0, 4.0, 4.0, 4.0));
-	      centroidSet.add(new centroids(7.0, 7.0, 7.0, 7.0));
+		  centroidSet.add(new centroids(4.9,3.1,1.5,0.1)); // lowest set.
+	      centroidSet.add(new centroids(5.8,2.7,4.1,1.0));
+	      centroidSet.add(new centroids(7.7,2.6,6.9,2.3));
 	      //System.out.println("Centre 1: " +centroidSet.get(0));
 	     // System.out.println("Centre 2: " +centroidSet.get(1));
 	     // System.out.println("Centre 3: " +centroidSet.get(2));
