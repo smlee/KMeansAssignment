@@ -9,8 +9,8 @@ public class parseText {
     static ArrayList<centroids>centroidSet = new ArrayList<centroids>();
     static ArrayList<dataSets> dataSet1 = new ArrayList<dataSets>();
     
-    public static final int k = 3;    // Total clusters.
-    public static final int totalData = 150; 
+    public static final int k = 3;    // number of clusters.
+    public static final int totalData = 150; //number of iris data lines
     
 	  public parseText(String aFileName){
 	    fFile = new File(aFileName);  
@@ -35,12 +35,12 @@ public class parseText {
 	    scanner.useDelimiter(",");
 	    
 	    if ( scanner.hasNext() ){
-	    	//dataSet1 = new ArrayList<dataSets>(150);
 	      double sL = scanner.nextDouble();
 	      double sW = scanner.nextDouble();
 	      double pL = scanner.nextDouble();
 	      double pW = scanner.nextDouble();
 	      String cN = scanner.next();
+	      
 	      dataSet1.add(new dataSets(sL, sW, pL, pW));
 	      
 	    }
@@ -69,6 +69,10 @@ public class parseText {
 		  centroidSet.add(new centroids(4.9,3.1,1.5,0.1)); // lowest set.
 	      centroidSet.add(new centroids(5.8,2.7,4.1,1.0));
 	      centroidSet.add(new centroids(7.7,2.6,6.9,2.3));
+	      for (int i = 0; i< k; i++){
+	    	  System.out.println("( "+centroidSet.get(i).getsL()+", "+centroidSet.get(i).getsW()+
+	    			  ", "+centroidSet.get(i).getpL()+", "+centroidSet.get(i).getpW()+")" );
+	      }
 	      //System.out.println("Centre 1: " +centroidSet.get(0));
 	     // System.out.println("Centre 2: " +centroidSet.get(1));
 	     // System.out.println("Centre 3: " +centroidSet.get(2));
@@ -181,17 +185,10 @@ public class parseText {
               }
           }
       }
-      return;
+     // return;
   }
 
-	  
-	  /**
-	   * 
-	   * @param d
-	   * @param c
-	   * @return
-	   */
-	 
+
 	    private static double eDist(dataSets d, centroids c)
 	    {
 	        return Math.sqrt(Math.pow(c.getsL()- d.getsL(), 2) + Math.pow((c.getsW() - d.getsW()), 2)

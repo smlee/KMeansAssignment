@@ -10,13 +10,12 @@ public class parseTest {
 	    parseText parser = new parseText("iris.data");
 	    parser.processLines();
 	    log("Done.");
-	    System.out.println(parser.dataSet1.get(0).getpL());
 	    parser.init();
 	    parser.Clustering();
 	    
 	    for(int i = 0; i < k; i++)
 	    {
-	        System.out.println("Cluster " + i + " includes:");
+	        System.out.println("Cluster " + (i+1) + " includes:");
 	        for(int j = 0; j < totalData; j++)
 	        {
 	            if(parser.dataSet.get(j).getCluster() == i){

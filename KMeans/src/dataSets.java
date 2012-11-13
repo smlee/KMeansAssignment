@@ -2,7 +2,7 @@
 public class dataSets {
 	
 	double sepalLength, sepalWidth, petalLength, petalWidth;
-	int cluster;
+	int cluster = 0;
 	//String className;
 	
 	public dataSets(double sL, double sW, double pL, double pW){
