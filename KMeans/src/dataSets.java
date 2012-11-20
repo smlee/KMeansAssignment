@@ -2,15 +2,13 @@
 public class dataSets {
 	
 	double sepalLength, sepalWidth, petalLength, petalWidth;
-	int cluster = 0;
-	//String className;
+	int cluster;
 	
 	public dataSets(double sL, double sW, double pL, double pW){
 		this.sepalLength = sL;
 		this.sepalWidth = sW;
 		this.petalLength = pL;
 		this.petalWidth = pW;
-		//this.className = cN;
 		return;
 	}
 	

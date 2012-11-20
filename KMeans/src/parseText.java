@@ -8,6 +8,8 @@ public class parseText {
 	static ArrayList<dataSets> dataSet = new ArrayList<dataSets>();
     static ArrayList<centroids>centroidSet = new ArrayList<centroids>();
     static ArrayList<dataSets> dataSet1 = new ArrayList<dataSets>();
+    private final File fFile;
+    private boolean isStillMoving;
     
     public static final int k = 3;    // number of clusters.
     public static final int totalData = 150; //number of iris data lines
@@ -22,7 +24,7 @@ public class parseText {
 	    try {
 	      //first use a Scanner to get each line
 	      while ( scanner.hasNextLine() ){
-	        processLine( scanner.nextLine() );
+	        processLine(scanner.nextLine() );
 	      }
 	    }
 	    finally {
@@ -48,16 +50,7 @@ public class parseText {
 	      print("Empty or invalid line. Unable to process.");
 	    }
 	  } 
-	  /**  for (int x = 0; x<dataSet1.size();x++){
-	    	dataSets dS = (dataSets)dataSet1.get(x);
-		    print("Sepal length is " + dS.sepalLength + ", Sepal Width is " + dS.getsW()+", Petal length is "+dS.getpL()+", Petal width is "+dS.getpW());//+", and Class is "+dS.className );
-	    }
-	    System.out.println(dataSet1.size());
-	  
-	  }
-	  //**/
-	  private final File fFile;
-	  private boolean isStillMoving;
+	 
 	  
 	  private static void print(Object aObject){
 	    System.out.println(String.valueOf(aObject));
@@ -70,13 +63,10 @@ public class parseText {
 	      centroidSet.add(new centroids(5.8,2.7,4.1,1.0));
 	      centroidSet.add(new centroids(7.7,2.6,6.9,2.3));
 	      for (int i = 0; i< k; i++){
-	    	  System.out.println("( "+centroidSet.get(i).getsL()+", "+centroidSet.get(i).getsW()+
+	    	  System.out.println("("+centroidSet.get(i).getsL()+", "+centroidSet.get(i).getsW()+
 	    			  ", "+centroidSet.get(i).getpL()+", "+centroidSet.get(i).getpW()+")" );
-	      }
-	      //System.out.println("Centre 1: " +centroidSet.get(0));
-	     // System.out.println("Centre 2: " +centroidSet.get(1));
-	     // System.out.println("Centre 3: " +centroidSet.get(2));
-	      return;// highest set.
+	      } 
+	     // return;
 		  
 		  
 	  }

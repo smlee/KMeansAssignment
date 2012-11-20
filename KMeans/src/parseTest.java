@@ -9,7 +9,7 @@ public class parseTest {
 	public static void main(String... aArgs) throws FileNotFoundException {
 	    parseText parser = new parseText("iris.data");
 	    parser.processLines();
-	    log("Done.");
+	    log("Done importing iris.data");
 	    parser.init();
 	    parser.Clustering();
 	    
@@ -22,9 +22,9 @@ public class parseTest {
 	                System.out.println("     (" + parser.dataSet.get(j).getsL() + ", " + parser.dataSet.get(j).getsW() + 
 	                		", " + parser.dataSet.get(j).getpL()+ ", " + parser.dataSet.get(j).getpW()+ ")");
 	            }
-	        } // j
+	        } 
 	        System.out.println();
-	    } // i
+	    } 
 	  
 	
 	    System.out.println("Centroids finalized at:");
