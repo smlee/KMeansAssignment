@@ -47,7 +47,7 @@ public class dataSets {
 		return petalWidth;
 	}
 	
-	public void Cluster(int nClus){
+	public void setCluster(int nClus){
 		this.cluster = nClus;
 			
 	}

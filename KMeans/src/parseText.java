@@ -9,7 +9,7 @@ public class parseText {
     static ArrayList<centroids>centroidSet = new ArrayList<centroids>();
     static ArrayList<dataSets> dataSet1 = new ArrayList<dataSets>();
     private final File fFile;
-    private boolean isStillMoving;
+    static boolean notDone;
     
     public static final int k = 3;    // number of clusters.
     public static final int totalData = 150; //number of iris data lines
@@ -41,7 +41,7 @@ public class parseText {
 	      double sW = scanner.nextDouble();
 	      double pL = scanner.nextDouble();
 	      double pW = scanner.nextDouble();
-	      String cN = scanner.next();
+	      String cN = scanner.next(); //not interested in the name of the flower
 	      
 	      dataSet1.add(new dataSets(sL, sW, pL, pW));
 	      
@@ -77,84 +77,84 @@ public class parseText {
 	        double distance = 0.0;                        // The current minimum value.
 	        int index = 0;
 	        int cluster = 0;
-	        boolean isStillMoving = true;
-	        dataSets newData = null;
+	        boolean notDone = true;
+	        dataSets testData = null;
 	        
 	        // Add in new data, one at a time, recalculating centroids with each new one. 
 	        while(dataSet.size() < totalData)
 	        {
 	        	dataSets dS = (dataSets)dataSet1.get(index);
-	        	newData = new dataSets(dS.getsL(), dS.getsW(),
+	        	testData = new dataSets(dS.getsL(), dS.getsW(),
 	        			dS.getpL(), dS.getpW());
-	        	dataSet.add(newData);
+	        	dataSet.add(testData);
 	            minimum = bigNumber;
 	            for(int i = 0; i < k; i++)
 	            {
-	                distance = eDist (newData, centroidSet.get(i));
+	                distance = eDist (testData, centroidSet.get(i));
 	                if(distance < minimum){
 	                    minimum = distance;
 	                    cluster = i;
 	                }
 	            }
-	            newData.Cluster(cluster);
+	            testData.setCluster(cluster);
 	  
 	        for(int i = 0; i < k; i++)
             {
-                double totalX = 0; // sepal Length
-                double totalY = 0; // sepal Width
-                double totalZ = 0; // petal Length
-                double totalG = 0; // petal Width
-                int clusterMembers = 0;
+                double tsLength = 0; // sepal Length
+                double tsWidth = 0; // sepal Width
+                double tpLength = 0; // petal Length
+                double tpWidth = 0; // petal Width
+                int totalclusterMembers = 0;
                 
                 for(int j = 0; j < dataSet.size(); j++)
                 {
                     if(dataSet.get(j).getCluster() == i){
-                        totalX += dataSet.get(j).getsL();
-                        totalY += dataSet.get(j).getsW();
-                        totalZ += dataSet.get(j).getpL();
-                        totalG += dataSet.get(j).getpW();
-                        clusterMembers++;
+                        tsLength += dataSet.get(j).getsL();
+                        tsWidth += dataSet.get(j).getsW();
+                        tpLength += dataSet.get(j).getpL();
+                        tpWidth += dataSet.get(j).getpW();
+                        totalclusterMembers++;
                     }
                 }
-                if(clusterMembers > 0){
-                    centroidSet.get(i).getsL(totalX / clusterMembers);
-                    centroidSet.get(i).getsW(totalY / clusterMembers);
-                    centroidSet.get(i).getpL(totalZ / clusterMembers);
-                    centroidSet.get(i).getpW(totalG / clusterMembers);
+                if(totalclusterMembers > 0){
+                    centroidSet.get(i).getsL(tsLength / totalclusterMembers);
+                    centroidSet.get(i).getsW(tsWidth / totalclusterMembers);
+                    centroidSet.get(i).getpL(tpLength / totalclusterMembers);
+                    centroidSet.get(i).getpW(tpWidth / totalclusterMembers);
                 }
             }
             index++;
 	  }
 	  
-	  while(isStillMoving){
+	  while(notDone){
           // calculate new centroids.
           for(int i = 0; i < k; i++)
           {
-              double totalX = 0;
-              double totalY = 0;
-              double totalZ = 0;
-              double totalG = 0;
-              int clusterMembers = 0;
+              double tsLength = 0;
+              double tsWidth = 0;
+              double tpLength = 0;
+              double tpWidth = 0;
+              int totalclusterMembers = 0;
               for(int j = 0; j < dataSet.size(); j++)
               {
                   if(dataSet.get(j).getCluster() == i){
-                      totalX += dataSet.get(j).getsL();
-                      totalY += dataSet.get(j).getsW();
-                      totalZ += dataSet.get(j).getpL();
-                      totalG += dataSet.get(j).getpW();
-                      clusterMembers++;
+                      tsLength += dataSet.get(j).getsL();
+                      tsWidth += dataSet.get(j).getsW();
+                      tpLength+= dataSet.get(j).getpL();
+                      tpWidth += dataSet.get(j).getpW();
+                      totalclusterMembers++;
                   }
               }
-              if(clusterMembers > 0){
-                  centroidSet.get(i).getsL(totalX / clusterMembers);
-                  centroidSet.get(i).getsW(totalY / clusterMembers);
-                  centroidSet.get(i).getpL(totalZ / clusterMembers);
-                  centroidSet.get(i).getpW(totalG / clusterMembers);
+              if(totalclusterMembers > 0){
+                  centroidSet.get(i).getsL(tsLength / totalclusterMembers);
+                  centroidSet.get(i).getsW(tsWidth / totalclusterMembers);
+                  centroidSet.get(i).getpL(tpLength / totalclusterMembers);
+                  centroidSet.get(i).getpW(tpWidth / totalclusterMembers);
               }
           }
           
          
-          isStillMoving = false;
+          notDone = false;
           
           for(int i = 0; i < dataSet.size(); i++)
           {
@@ -168,10 +168,10 @@ public class parseText {
                       cluster = j;
                   }
               }
-              tempData.Cluster(cluster);
+              tempData.setCluster(cluster);
               if(tempData.getCluster() != cluster){
-                  tempData.Cluster(cluster);
-                  isStillMoving = true;
+                  tempData.setCluster(cluster);
+                  notDone = true;
               }
           }
       }
